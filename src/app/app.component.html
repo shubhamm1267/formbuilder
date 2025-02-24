@@ -1,0 +1,67 @@
+<mat-card class="form-builder-container">
+  <h2>Form Generator</h2>
+
+  <mat-form-field>
+    <mat-label>Component Name</mat-label>
+    <input matInput [(ngModel)]="componentName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Form Name</mat-label>
+    <input matInput [(ngModel)]="formName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Select Field Type</mat-label>
+    <mat-select [(ngModel)]="selectedFieldType">
+      <mat-option *ngFor="let type of fieldTypes" [value]="type">{{ type }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Field Label</mat-label>
+    <input matInput [(ngModel)]="newFieldLabel">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>FormControl Name</mat-label>
+    <input matInput [(ngModel)]="newFieldName">
+  </mat-form-field>
+
+  <div *ngIf="selectedFieldType === 'Dropdown' || selectedFieldType === 'Checkbox' || selectedFieldType === 'Radio'">
+    <h3>Add Options:</h3>
+    <mat-form-field>
+      <mat-label>Enter Option</mat-label>
+      <input matInput #optionInput>
+      <button mat-mini-fab color="primary" (click)="addOption(optionInput.value); optionInput.value=''">+</button>
+    </mat-form-field>
+
+    <div *ngFor="let opt of newOptions; let i = index">
+      {{ opt }} <button mat-mini-fab color="warn" (click)="removeOption(i)">X</button>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" (click)="addField()">Add Field</button>
+
+  <button mat-raised-button color="accent" (click)="previewForm()">Preview Form</button>
+  <button mat-raised-button color="warn" (click)="generateForm()">Generate Code</button>
+
+ 
+  <mat-card class="form-builder-container">
+   
+  
+    <h2>Generated Code:</h2>
+  
+    <div class="code-container">
+      <pre>{{ generatedFormCode }}
+          <mat-icon class="copy-button" (click)="copyToClipboard()">content_copy</mat-icon>
+        
+      </pre>
+    </div>
+  </mat-card>
+  
+  
+</mat-card>
+
+
+

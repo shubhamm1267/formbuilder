@@ -1,0 +1,26 @@
+<mat-card class="preview-container">
+  <h2>Form Preview</h2>
+  <form>
+    <div *ngFor="let field of data.fields">
+      <mat-form-field *ngIf="['Text', 'Email', 'Number', 'Password'].includes(field.type)">
+        <mat-label>{{ field.label }}</mat-label>
+        <input matInput [type]="field.type.toLowerCase()">
+      </mat-form-field>
+
+      <mat-form-field *ngIf="field.type === 'Dropdown'">
+        <mat-label>{{ field.label }}</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let opt of field.options" [value]="opt">{{ opt }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox *ngIf="field.type === 'Checkbox'">{{ field.label }}</mat-checkbox>
+
+      <mat-radio-group *ngIf="field.type === 'Radio'">
+        <mat-radio-button *ngFor="let opt of field.options" [value]="opt">{{ opt }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="submitPreviewForm()">Submit</button>
+  </form>
+</mat-card>

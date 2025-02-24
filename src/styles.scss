@@ -1,0 +1,65 @@
+/* Import Material Core & Themes */
+@use '~@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ )
+));
+
+/* Apply Theme */
+@include mat.all-component-themes($my-theme);
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+}
+
+
+.mat-mdc-form-field {
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
+  padding: 5px !important;
+}
+
+.mat-mdc-select {
+  border: 1px solid #ccc !important;
+  border-radius: 5px !important;
+}
+
+.mat-mdc-select-panel {
+  background: white !important;
+  border-radius: 5px !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid #ccc !important;
+}
+.mat-select-panel-wrap {
+  flex-basis: 100%;
+  padding-top: 41px;
+}
+
+/* Mat-Option Styling */
+.mat-mdc-option {
+  font-size: 16px;
+  padding: 12px !important;
+  padding-top: 20px;
+}
+
+/* Focus Effect on Input Fields */
+.mat-mdc-form-field.mat-focused {
+  border-color: #007BFF !important;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}

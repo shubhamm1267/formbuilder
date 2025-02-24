@@ -1,0 +1,39 @@
+.preview-container {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+.preview-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+
+button {
+  background: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .preview-container {
+    width: 90%;
+  }
+}
